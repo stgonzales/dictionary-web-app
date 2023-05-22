@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+select {
+  all: unset;
+  outline: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+select {
+  @apply font-bold text-body-m text-end dark:text-neutral-100;
+}
