@@ -1,6 +1,7 @@
 import clsx from 'clsx'
 import { createSignal } from 'solid-js'
-import { Toogle } from './Toogle'
+import { useTheme } from "../context/ThemeContext"
+import { useFontFamily } from '../context/FontFamilyContext'
 
 export const Header = () => {
   return (
@@ -18,17 +19,35 @@ export const Header = () => {
 type FontOption = 'sans-serif' | 'serif' | 'mono'
 
 const DropDown = () => {
-  const [ fontOption, setFontOption ] = createSignal<FontOption>('sans-serif')
+  const [ state, { setFontFamily } ] = useFontFamily()
 
-  const handleOptionSelection = (e: any) => {    
-    setFontOption(e.target.options[e.target.selectedIndex].value)
+  const handleOptionSelection = (e: any) => {
+    setFontFamily(e.target.options[e.target.selectedIndex].value)
   }
 
   return (
-    <select name="font" id="font" onChange={handleOptionSelection} class={clsx(fontOption() === 'sans-serif' && 'font-sans', fontOption() === 'serif' && 'font-serif', fontOption() === 'mono' && 'font-mono')}>
-      <option value='sans-serif' class='font-sans font-bold text-body-m' selected>Sans Serif</option>
-      <option value='serif' class='font-serif font-bold text-body-m'>Serif</option>
-      <option value='mono' class='font-mono font-bold text-body-m'>Mono</option>
+    <select name="font" id="font" onChange={handleOptionSelection} class={`font-${state.fontFamily}`}>
+      <option value='sans' class="font-sans font-bold text-body-m"  selected>Sans Serif</option>
+      <option value='serif' class="font-serif font-bold text-body-m" >Serif</option>
+      <option value='mono' class="font-mono font-bold text-body-m" >Mono</option>
     </select>
+  )
+}
+
+const Toogle = () => {
+  const [ state, { setDarkMode, setLightMode }] = useTheme()
+
+  const handleToogle = (e: Event) => {
+    const isChecked = (e.target as HTMLInputElement).checked
+
+    if(isChecked) setDarkMode()
+    else setLightMode()
+  }
+
+  return (
+    <>
+      <input type="checkbox" id="toogle" class='peer h-0 w-0 hidden' checked={state.theme === 'dark'} onChange={handleToogle}/>
+      <label for="toogle" class="cursor-pointer bg-neutral-400 w-10 h-5 block rounded-[10px] relative peer-checked:bg-primary peer-checked:after:translate-x-full peer-checked:after:right-0 after:absolute after:top-[3px] after:left-[3px] after:w-[14px] after:h-[14px] after:rounded-full after:bg-neutral-100 after:transition-all"></label>
+    </>
   )
 }
