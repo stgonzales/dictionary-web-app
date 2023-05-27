@@ -24,7 +24,11 @@ module.exports = {
       mono: ['Inconsolata', 'monospace'],
     },
     fontSize: {
-      'body-m': ['1.125rem', '1.5rem']
+      'heading-l': ['4rem', '4.8125rem'], // 64px 77px
+      'heading-m': ['1.5rem', '1.8125rem'], // 24px 29px
+      'heading-s': ['1.25rem', '1.5rem'], // 20px 24px
+      'body-m': ['1.125rem', '1.5rem'], // 18px 24px
+      'body-s': ['0.875rem', '1.0625rem'], // 14px 17px
     }
   },
   darkMode: 'class',
