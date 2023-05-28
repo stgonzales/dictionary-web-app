@@ -1,7 +1,6 @@
 /* @refresh reload */
 import { render } from 'solid-js/web';
-import { ThemeProvider } from './context/ThemeContext';
-import { FontFamilyProvider } from './context/FontFamilyContext';
+import { ThemeProvider, FontFamilyProvider, DictionaryProvider } from './context';
 import App from './App';
 
 import './index.css';
@@ -17,7 +16,9 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
 render(() => (
   <FontFamilyProvider>
     <ThemeProvider>
-      <App/>
+      <DictionaryProvider>
+        <App/>
+      </DictionaryProvider>
     </ThemeProvider>
   </FontFamilyProvider>
   ), root!);
