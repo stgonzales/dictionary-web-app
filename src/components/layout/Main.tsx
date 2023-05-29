@@ -1,5 +1,5 @@
 import { For, Show } from "solid-js"
-import { useDictionary, useFontFamily } from "../context"
+import { useDictionary, useFontFamily } from "@/context"
 
 export const Main = () => {
   const [ fontState ] = useFontFamily()

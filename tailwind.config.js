@@ -33,6 +33,10 @@ module.exports = {
     extend: {
       screens: {
         'xs': { 'max': '639px' },
+      },
+      boxShadow: {
+        'light': '0px 5px 30px rgba(0, 0, 0, 0.1)',
+        'dark': '0px 5px 30px #A445ED'
       }
     },
   },

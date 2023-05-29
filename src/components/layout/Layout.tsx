@@ -1,6 +1,5 @@
-import clsx from "clsx";
 import { ParentComponent } from "solid-js";
-import { useTheme } from "../context";
+import { useTheme } from "@/context";
 
 export const Layout: ParentComponent = ({ children }) => {
   const [state] = useTheme()

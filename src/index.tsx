@@ -1,6 +1,7 @@
 /* @refresh reload */
+import 'solid-devtools'
 import { render } from 'solid-js/web';
-import { ThemeProvider, FontFamilyProvider, DictionaryProvider } from './context';
+import { ThemeProvider, FontFamilyProvider, DictionaryProvider } from '@/context';
 import App from './App';
 
 import './index.css';

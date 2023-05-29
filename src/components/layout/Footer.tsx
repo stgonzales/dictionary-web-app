@@ -1,4 +1,4 @@
-import { useFontFamily } from "../context"
+import { useFontFamily } from "@/context"
 
 export const Footer = () => {
   const [ fontState ] = useFontFamily()

@@ -1,7 +1,7 @@
 import { createContext, ParentComponent, useContext } from "solid-js";
 import { createStore } from 'solid-js/store'
 
-type FontFamily = 'sans' | 'serif' | 'mono'
+export type FontFamily = 'sans' | 'serif' | 'mono'
 
 export type FontFamilyContextState = {
   readonly fontFamily: FontFamily;
