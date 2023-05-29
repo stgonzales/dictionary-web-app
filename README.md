@@ -36,15 +36,19 @@ Users should be able to:
 ### Screenshot
 
 ![Desktop Light Sans](./assets/../src/assets/images/screenshots/desktop-light-sans.png)
+
 *Desktop Light theme with Sans font*
 
 ![Mobile Light Sans](./assets/../src/assets/images/screenshots/mobile-light-sans.png)
+
 *Mobile Light theme with Sans font*
 
 ![Desktop Light Sans](./assets/../src/assets/images/screenshots/desktop-dark-sans.png)
+
 *Desktop Dark theme with Sans font*
 
 ![Desktop Light Sans](./assets/../src/assets/images/screenshots/mobile-dark-sans.png)
+
 *Mobile Light theme with Sans font*
 
 ### Links
@@ -62,7 +66,7 @@ Users should be able to:
 
 ### What I learned
 
-In this project I was able to understand some of the concepts of [Solidjs](https://www.solidjs.com/) - how to create and use context, how to use signals and [Solijs helper components](https://www.solidjs.com/docs/latest/api#control-flow), also traing more about [Tailwindcss](https://tailwindcss.com/) dark mode.
+In this project I was able to understand some of the [Solidjs](https://www.solidjs.com/) concepts - how to create and use context, how to use signals and [Solijs helper components](https://www.solidjs.com/docs/latest/api#control-flow), also traing more about [Tailwindcss](https://tailwindcss.com/) dark mode.
 
 ### Useful resources
 
