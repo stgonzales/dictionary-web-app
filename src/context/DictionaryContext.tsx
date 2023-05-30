@@ -4,7 +4,7 @@ import { createStore } from "solid-js/store";
 export type DictionaryContextState = {
   word: string;
   result?: Result[];
-
+  notFound?: NoDefinition;
 }
 
 export type Result = {
@@ -51,6 +51,11 @@ export type DictionaryContextValue = [
   }
 ]
 
+export type NoDefinition = {
+  title: string;
+  message: string;
+};
+
 const defaultState: DictionaryContextState = {
   word: 'keyboard',
 }
@@ -67,12 +72,21 @@ export const DictionaryProvider: ParentComponent = (props) => {
   const [state, setState ] = createStore<DictionaryContextState>(defaultState)
 
   const searchWord = async (word: string) => {
-    const result = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`).then(data => data.json()) as Result[]
-    setState('result', result)
+    const result = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`).then(data => data.json()) as Result[] | NoDefinition
+    
+    if(Array.isArray(result)) {
+      setState('result', result)
+      setState('notFound', undefined)
+    }
+    else {
+      setState('result', undefined)
+      setState('notFound', result)
+    }
   }
 
   const reset = () => {
     setState('result', undefined)
+    setState('notFound', undefined)
   }
 
   onMount(() => searchWord(state.word))

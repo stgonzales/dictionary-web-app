@@ -16,6 +16,15 @@ export const Main = () => {
       <section id="input">
         <Form />
       </section>
+      <Show when={dictionaryState.notFound}>
+        <section id="not-found" class="mt-32 text-center flex flex-col gap-11">
+          <span class="text-[64px]">&#128533;</span>
+          <div class="flex flex-col gap-6">
+            <p class={`font-${fontState.fontFamily} text-heading-s font-bold`}>{dictionaryState.notFound?.title}</p>
+            <p class={`font-${fontState.fontFamily} text-body-m text-neutral-400`}>{dictionaryState.notFound?.message}</p>
+          </div>
+        </section>
+      </Show>
       <Show when={dictionaryState.result}>
         <For each={dictionaryState.result}>
           {(result) => (
