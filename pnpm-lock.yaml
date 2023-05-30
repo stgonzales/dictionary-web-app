@@ -18,6 +18,9 @@ devDependencies:
   solid-devtools:
     specifier: ^0.26.0
     version: 0.26.0(@solidjs/meta@0.28.5)(@solidjs/router@0.8.2)(solid-js@1.6.10)(typescript@4.9.5)(vite@4.1.1)
+  solid-form-action:
+    specifier: ^0.3.0
+    version: 0.3.0
   tailwindcss:
     specifier: ^3.3.2
     version: 3.3.2
@@ -3661,6 +3664,12 @@ packages:
       - solid-start-vercel
       - supports-color
       - typescript
+    dev: true
+
+  /solid-form-action@0.3.0:
+    resolution: {integrity: sha512-wlmcNKXTZ0QE5Vyt7jzLWi7/sQKsFM9F/lL+wraHrwQsshZsY81+LvsFS5d4mi6shfoIJAazKjr1R/A3WCfC3w==}
+    dependencies:
+      solid-js: 1.6.10
     dev: true
 
   /solid-js@1.6.10:

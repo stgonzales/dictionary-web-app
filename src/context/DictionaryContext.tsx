@@ -46,41 +46,33 @@ export type License = {
 export type DictionaryContextValue = [
   state: DictionaryContextState,
   actions: {
-    setWord: (word: string) => void;
-    searchWord: () => Promise<void>;
+    searchWord: (word: string) => Promise<void>;
   }
 ]
 
 const defaultState: DictionaryContextState = {
-  word: '',
+  word: 'keyboard',
 }
 
 const DictionaryContext = createContext<DictionaryContextValue>([
   defaultState,
   {
-    setWord: () => {},
     searchWord: async () => {}
   }
 ])
 
 export const DictionaryProvider: ParentComponent = (props) => {
-  const [state, setState ] = createStore<DictionaryContextState>({ word: 'keyboard'})
+  const [state, setState ] = createStore<DictionaryContextState>(defaultState)
 
-  const setWord = (word: string) => {
-    setState('word', word)
+  const searchWord = async (word: string) => {
+    const result = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`).then(data => data.json()) as Result[]
+    setState('result', result)
   }
 
-  const searchWord = async () => {
-    if(state.word) {
-      const result = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${state.word}`).then(data => data.json()) as Result[]
-      setState('result', result)
-    }
-  }
-
-  onMount(() => searchWord())
+  onMount(() => searchWord(state.word))
 
   return(
-    <DictionaryContext.Provider value={[ state, { setWord, searchWord } ]}>
+    <DictionaryContext.Provider value={[ state, { searchWord } ]}>
       {props.children}
     </DictionaryContext.Provider>
   )

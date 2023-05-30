@@ -1,6 +1,6 @@
 import { For, Show } from "solid-js"
 import { useDictionary, useFontFamily } from "@/context"
-import { Line } from "@/components"
+import { Form, Line } from "@/components"
 
 export const Main = () => {
   const [ fontState ] = useFontFamily()
@@ -14,7 +14,7 @@ export const Main = () => {
   return (
     <main class="flex flex-col gap-10 pb-20">
       <section id="input">
-        <Input />
+        <Form />
       </section>
       <Show when={dictionaryState.result}>
         <For each={dictionaryState.result}>
@@ -107,25 +107,25 @@ export const Main = () => {
   )
 }
 
-const Input = () => {
-  const [ fontState ] = useFontFamily()
-  const [_, { setWord, searchWord }] = useDictionary()
+// const Input = () => {
+//   const [ fontState ] = useFontFamily()
+//   const [_, { setWord, searchWord }] = useDictionary()
 
-  const handleInput = (e: any) => {
-    setWord(e.target.value)
-    if(e.key === 'Enter') {
-      searchWord()
-    }
-  }
+//   const handleInput = (e: any) => {
+//     setWord(e.target.value)
+//     if(e.key === 'Enter') {
+//       searchWord()
+//     }
+//   }
 
-  return (
-    <div class="flex items-center bg-neutral-200 dark:bg-neutral-700 focus-within:outline focus-within:outline-1 focus-within:outline-primary rounded-2xl">
-      <div class="w-full hover:cursor-pointer">
-        <input onkeyup={handleInput} type="text" placeholder="Search for any word…" style={ {background: 'none'}} class={`w-full py-5 pl-6 focus:outline-none text-heading-s text-neutral-600 dark:text-neutral-100 font-bold placeholder:font-${fontState.fontFamily} font-${fontState.fontFamily} placeholder:text-neutral-600/25 dark:placeholder:text-neutral-200/25`}/>
-      </div>
-      <div class="bg-neutral-200 dark:bg-neutral-700 pr-6 hover:cursor-pointer group">
-        <svg class='stroke-primary group-hover:scale-105 transition-transform' xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 18 18"><path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m12.663 12.663 3.887 3.887M1 7.664a6.665 6.665 0 1 0 13.33 0 6.665 6.665 0 0 0-13.33 0Z"/></svg>
-      </div>
-    </div>
-  )
-}
+//   return (
+//     <div class="flex items-center bg-neutral-200 dark:bg-neutral-700 focus-within:outline focus-within:outline-1 focus-within:outline-primary rounded-2xl">
+//       <div class="w-full hover:cursor-pointer">
+//         <input onkeyup={handleInput} type="text" placeholder="Search for any word…" style={ {background: 'none'}} class={`w-full py-5 pl-6 focus:outline-none text-heading-s text-neutral-600 dark:text-neutral-100 font-bold placeholder:font-${fontState.fontFamily} font-${fontState.fontFamily} placeholder:text-neutral-600/25 dark:placeholder:text-neutral-200/25`}/>
+//       </div>
+//       <div class="bg-neutral-200 dark:bg-neutral-700 pr-6 hover:cursor-pointer group">
+//         <svg class='stroke-primary group-hover:scale-105 transition-transform' xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 18 18"><path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m12.663 12.663 3.887 3.887M1 7.664a6.665 6.665 0 1 0 13.33 0 6.665 6.665 0 0 0-13.33 0Z"/></svg>
+//       </div>
+//     </div>
+//   )
+// }
