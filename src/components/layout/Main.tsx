@@ -12,7 +12,7 @@ export const Main = () => {
   }
 
   return (
-    <main class="flex flex-col gap-10 pb-20">
+    <main class="flex flex-col gap-6 md:gap-10 lg:gap-[3.25rem] pb-20">
       <section id="input">
         <Form />
       </section>
@@ -20,8 +20,8 @@ export const Main = () => {
         <section id="not-found" class="mt-32 text-center flex flex-col gap-11">
           <span class="text-[64px]">&#128533;</span>
           <div class="flex flex-col gap-6">
-            <p class={`font-${fontState.fontFamily} text-heading-s font-bold text-neutral-600 dark:text-neutral-100`}>{dictionaryState.notFound?.title}</p>
-            <p class={`font-${fontState.fontFamily} text-body-m text-neutral-400`}>{dictionaryState.notFound?.message}</p>
+            <p class={`font-${fontState.fontFamily} text-lg font-bold text-neutral-600 dark:text-neutral-100`}>{dictionaryState.notFound?.title}</p>
+            <p class={`font-${fontState.fontFamily} text-md text-neutral-400`}>{dictionaryState.notFound?.message}</p>
           </div>
         </section>
       </Show>
@@ -31,14 +31,14 @@ export const Main = () => {
             <>
               <section id="phonetics" class="flex items-center justify-between">
                 <div>
-                  <h1 class={`font-${fontState.fontFamily} mb-2 text-heading-l font-bold text-neutral-600 dark:text-neutral-200`}>{result.word}</h1>
+                  <h1 class={`font-${fontState.fontFamily} mb-2 text-1xl md:text-2xl lg:text-3xl font-bold text-neutral-600 dark:text-neutral-200`}>{result.word}</h1>
                   <Show when={result.phonetic}>
-                    <span class={`font-${fontState.fontFamily} text-primary text-heading-m`}>{result.phonetic}</span>
+                    <span class={`font-${fontState.fontFamily} text-primary text-md md:text-xl`}>{result.phonetic}</span>
                   </Show>
                 </div>
                 <Show when={result.phonetics}>
-                  <div class="w-[75px] h-[75px] hover:cursor-pointer hover:scale-105 transition-transform group" onClick={() => handleAudio(result.phonetics[0].audio)}>
-                    <svg class="fill-primary/25 hover:fill-primary" xmlns="http://www.w3.org/2000/svg" width="75" height="75" viewBox="0 0 75 75"><g fill-rule="evenodd"><circle cx="37.5" cy="37.5" r="37.5"/><path class="fill-primary group-hover:fill-neutral-100" d="M29 27v21l21-10.5z"/></g></svg>
+                  <div class="w-12 h-12 md:w-[75px] md:h-[75px] hover:cursor-pointer hover:scale-105 transition-transform group" onClick={() => handleAudio(result.phonetics[0].audio)}>
+                    <svg class="fill-primary/25 hover:fill-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 75 75"><g fill-rule="evenodd"><circle cx="37.5" cy="37.5" r="37.5"/><path class="fill-primary group-hover:fill-neutral-100" d="M29 27v21l21-10.5z"/></g></svg>
                   </div>
                 </Show>
               </section>
@@ -48,19 +48,19 @@ export const Main = () => {
                     {(meaning) => (
                       <article class="flex flex-col gap-10">
                         <div class="flex items-center gap-6">
-                          <h2 class="text-heading-m text-neutral-600 dark:text-neutral-200 font-bold">{meaning.partOfSpeech}</h2>
+                          <h2 class="text-md md:text-xl text-neutral-600 dark:text-neutral-200 font-bold">{meaning.partOfSpeech}</h2>
                           <Line/>
                         </div>
-                        <h3 class="text-heading-s text-neutral-400">Meaning</h3>
+                        <h3 class="text-sm md:text-lg text-neutral-400">Meaning</h3>
                         <ul>
                           <For each={meaning.definitions}>
                             {({definition, example}) => (
                               <div class="ml-[22px] flex gap-5">
                                 <div class="text-primary">•</div>
                                 <div>
-                                  <li class="mb-4 text-body-m text-neutral-600 dark:text-neutral-100">{definition}</li>
+                                  <li class="mb-4 text-xs md:text-md text-neutral-600 dark:text-neutral-100">{definition}</li>
                                   <Show when={example}>
-                                    <span class="text-body-m text-neutral-400">"{example}"</span>
+                                    <span class="text-sm md:text-md text-neutral-400">"{example}"</span>
                                   </Show>
                                 </div>
                               </div>
@@ -69,20 +69,20 @@ export const Main = () => {
                         </ul>
                         <Show when={meaning.synonyms && meaning.synonyms.length >= 1}>
                           <div class="flex gap-3 flex-wrap">
-                            <h3 class="text-heading-s text-neutral-400">Synonyms</h3>
+                            <h3 class="text-sm md:text-lg text-neutral-400">Synonyms</h3>
                             <For each={meaning.synonyms}>
                               {(synonym) => (
-                                <p class="text-heading-s text-primary font-bold">{synonym}</p>
+                                <p class="text-sm md:text-lg text-primary font-bold">{synonym}</p>
                               )}
                             </For>
                           </div>
                         </Show>
                         <Show when={meaning.antonyms && meaning.antonyms.length >= 1}>
                           <div class="flex gap-3 flex-wrap">
-                            <h3 class="text-heading-s text-neutral-400">Antonyms</h3>
+                            <h3 class="text-sm md:text-lg text-neutral-400">Antonyms</h3>
                             <For each={meaning.antonyms}>
                               {(antonym) => (
-                                <p class="text-heading-s text-primary font-bold">{antonym}</p>
+                                <p class="text-sm md:text-lg text-primary font-bold">{antonym}</p>
                               )}
                             </For>
                           </div>
@@ -94,7 +94,7 @@ export const Main = () => {
               </section>
               <Line/>
               <section id="source">
-                <div class="flex gap-5 text-body-s underline text-neutral-400">
+                <div class="flex gap-5 text-xs underline text-neutral-400">
                   <p>Source</p>
                   <div class="flex flex-col gap-1">
                     <For each={result.sourceUrls}>
@@ -115,26 +115,3 @@ export const Main = () => {
     </main>
   )
 }
-
-// const Input = () => {
-//   const [ fontState ] = useFontFamily()
-//   const [_, { setWord, searchWord }] = useDictionary()
-
-//   const handleInput = (e: any) => {
-//     setWord(e.target.value)
-//     if(e.key === 'Enter') {
-//       searchWord()
-//     }
-//   }
-
-//   return (
-//     <div class="flex items-center bg-neutral-200 dark:bg-neutral-700 focus-within:outline focus-within:outline-1 focus-within:outline-primary rounded-2xl">
-//       <div class="w-full hover:cursor-pointer">
-//         <input onkeyup={handleInput} type="text" placeholder="Search for any word…" style={ {background: 'none'}} class={`w-full py-5 pl-6 focus:outline-none text-heading-s text-neutral-600 dark:text-neutral-100 font-bold placeholder:font-${fontState.fontFamily} font-${fontState.fontFamily} placeholder:text-neutral-600/25 dark:placeholder:text-neutral-200/25`}/>
-//       </div>
-//       <div class="bg-neutral-200 dark:bg-neutral-700 pr-6 hover:cursor-pointer group">
-//         <svg class='stroke-primary group-hover:scale-105 transition-transform' xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 18 18"><path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m12.663 12.663 3.887 3.887M1 7.664a6.665 6.665 0 1 0 13.33 0 6.665 6.665 0 0 0-13.33 0Z"/></svg>
-//       </div>
-//     </div>
-//   )
-// }
