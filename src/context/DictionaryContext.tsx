@@ -1,4 +1,4 @@
-import { ParentComponent, createContext, useContext } from "solid-js";
+import { ParentComponent, createContext, onMount, useContext } from "solid-js";
 import { createStore } from "solid-js/store";
 
 export type DictionaryContextState = {
@@ -64,7 +64,7 @@ const DictionaryContext = createContext<DictionaryContextValue>([
 ])
 
 export const DictionaryProvider: ParentComponent = (props) => {
-  const [state, setState ] = createStore<DictionaryContextState>({ word: ''})
+  const [state, setState ] = createStore<DictionaryContextState>({ word: 'keyboard'})
 
   const setWord = (word: string) => {
     setState('word', word)
@@ -76,6 +76,8 @@ export const DictionaryProvider: ParentComponent = (props) => {
       setState('result', result)
     }
   }
+
+  onMount(() => searchWord())
 
   return(
     <DictionaryContext.Provider value={[ state, { setWord, searchWord } ]}>
