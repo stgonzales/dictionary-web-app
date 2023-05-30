@@ -1,5 +1,6 @@
 import { For, Show } from "solid-js"
 import { useDictionary, useFontFamily } from "@/context"
+import { Line } from "@/components"
 
 export const Main = () => {
   const [ fontState ] = useFontFamily()
@@ -39,7 +40,7 @@ export const Main = () => {
                       <article class="flex flex-col gap-10">
                         <div class="flex items-center gap-6">
                           <h2 class="text-heading-m text-neutral-600 dark:text-neutral-200 font-bold">{meaning.partOfSpeech}</h2>
-                          <Div/>
+                          <Line/>
                         </div>
                         <h3 class="text-heading-s text-neutral-400">Meaning</h3>
                         <ul>
@@ -82,7 +83,7 @@ export const Main = () => {
                   </For>
                 </div>
               </section>
-              <Div/>
+              <Line/>
               <section id="source">
                 <div class="flex gap-5 text-body-s underline text-neutral-400">
                   <p>Source</p>
@@ -126,11 +127,5 @@ const Input = () => {
         <svg class='stroke-primary group-hover:scale-105 transition-transform' xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 18 18"><path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m12.663 12.663 3.887 3.887M1 7.664a6.665 6.665 0 1 0 13.33 0 6.665 6.665 0 0 0-13.33 0Z"/></svg>
       </div>
     </div>
-  )
-}
-
-const Div = () => {
-  return (
-    <div class="w-full h-[1px] bg-neutral-300 dark:bg-neutral-500"></div>
   )
 }
