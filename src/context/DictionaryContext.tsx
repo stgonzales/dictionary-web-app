@@ -47,6 +47,7 @@ export type DictionaryContextValue = [
   state: DictionaryContextState,
   actions: {
     searchWord: (word: string) => Promise<void>;
+    reset: () => void
   }
 ]
 
@@ -57,7 +58,8 @@ const defaultState: DictionaryContextState = {
 const DictionaryContext = createContext<DictionaryContextValue>([
   defaultState,
   {
-    searchWord: async () => {}
+    searchWord: async () => {},
+    reset: () => {}
   }
 ])
 
@@ -69,10 +71,14 @@ export const DictionaryProvider: ParentComponent = (props) => {
     setState('result', result)
   }
 
+  const reset = () => {
+    setState('result', undefined)
+  }
+
   onMount(() => searchWord(state.word))
 
   return(
-    <DictionaryContext.Provider value={[ state, { searchWord } ]}>
+    <DictionaryContext.Provider value={[ state, { searchWord, reset } ]}>
       {props.children}
     </DictionaryContext.Provider>
   )

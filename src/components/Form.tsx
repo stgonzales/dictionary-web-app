@@ -3,7 +3,7 @@ import { Errors, createFormActions } from 'solid-form-action'
 import { useDictionary, useFontFamily } from "@/context";
 
 export const Form: Component = () => {
-  const [_, { searchWord }] = useDictionary()
+  const [_, { searchWord, reset }] = useDictionary()
   
   const { actions, formState, errors, form } = createFormActions({
     initialValues: {
@@ -14,6 +14,8 @@ export const Form: Component = () => {
       if (values.word.length === 0) {
         errs.word = "Title must not be empty";
       }
+
+      reset()
 
       return errs;
     },
