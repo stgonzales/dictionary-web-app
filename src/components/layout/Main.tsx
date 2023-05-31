@@ -68,14 +68,14 @@ export const Main = () => {
                           </For>
                         </ul>
                         <Show when={meaning.synonyms && meaning.synonyms.length >= 1}>
-                          <li class="flex gap-3 flex-wrap">
+                          <div class="flex gap-3 flex-wrap">
                             <h3 class="text-sm md:text-lg text-neutral-400">Synonyms</h3>
                             <For each={meaning.synonyms}>
                               {(synonym) => (
                                 <p class="text-sm md:text-lg text-primary font-bold">{synonym}</p>
                               )}
                             </For>
-                          </li>
+                          </div>
                         </Show>
                         <Show when={meaning.antonyms && meaning.antonyms.length >= 1}>
                           <div class="flex gap-3 flex-wrap">
