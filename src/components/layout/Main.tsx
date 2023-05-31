@@ -13,7 +13,7 @@ export const Main = () => {
   }
 
   return (
-    <main class="flex flex-col gap-6 md:gap-10 lg:gap-[3.25rem] pb-20">
+    <main class="flex flex-col gap-6 md:gap-[50px] lg:gap-[42px] pb-20">
       <div id="input">
         <Form />
       </div>
