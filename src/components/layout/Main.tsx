@@ -55,27 +55,27 @@ export const Main = () => {
                         <ul>
                           <For each={meaning.definitions}>
                             {({definition, example}) => (
-                              <div class="ml-[22px] flex gap-5">
+                              <li class="ml-[22px] flex gap-5">
                                 <div class="text-primary">•</div>
                                 <div>
-                                  <li class="mb-4 text-xs md:text-md text-neutral-600 dark:text-neutral-100">{definition}</li>
+                                  <div class="mb-4 text-xs md:text-md text-neutral-600 dark:text-neutral-100">{definition}</div>
                                   <Show when={example}>
                                     <span class="text-sm md:text-md text-neutral-400">"{example}"</span>
                                   </Show>
                                 </div>
-                              </div>
+                              </li>
                               )}
                           </For>
                         </ul>
                         <Show when={meaning.synonyms && meaning.synonyms.length >= 1}>
-                          <div class="flex gap-3 flex-wrap">
+                          <li class="flex gap-3 flex-wrap">
                             <h3 class="text-sm md:text-lg text-neutral-400">Synonyms</h3>
                             <For each={meaning.synonyms}>
                               {(synonym) => (
                                 <p class="text-sm md:text-lg text-primary font-bold">{synonym}</p>
                               )}
                             </For>
-                          </div>
+                          </li>
                         </Show>
                         <Show when={meaning.antonyms && meaning.antonyms.length >= 1}>
                           <div class="flex gap-3 flex-wrap">
