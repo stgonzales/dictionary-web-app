@@ -95,7 +95,7 @@ export const Main = () => {
               <Line/>
               <section id="source">
                 <div class="flex gap-5 text-xs underline text-neutral-400">
-                  <p>Source</p>
+                  <h6>Source</h6>
                   <div class="flex flex-col gap-1">
                     <For each={result.sourceUrls}>
                       {(url) => (
