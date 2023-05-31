@@ -13,14 +13,14 @@ export const Main = () => {
 
   return (
     <main class="flex flex-col gap-6 md:gap-10 lg:gap-[3.25rem] pb-20">
-      <section id="input">
+      <div id="input">
         <Form />
-      </section>
+      </div>
       <Show when={dictionaryState.notFound}>
         <section id="not-found" class="mt-32 text-center flex flex-col gap-11">
           <span class="text-[64px]">&#128533;</span>
           <div class="flex flex-col gap-6">
-            <p class={`font-${fontState.fontFamily} text-lg font-bold text-neutral-600 dark:text-neutral-100`}>{dictionaryState.notFound?.title}</p>
+            <h2 class={`font-${fontState.fontFamily} text-lg font-bold text-neutral-600 dark:text-neutral-100`}>{dictionaryState.notFound?.title}</h2>
             <p class={`font-${fontState.fontFamily} text-md text-neutral-400`}>{dictionaryState.notFound?.message}</p>
           </div>
         </section>
@@ -46,7 +46,7 @@ export const Main = () => {
                 <div class="flex flex-col gap-10">
                   <For each={result.meanings}>
                     {(meaning) => (
-                      <article class="flex flex-col gap-10">
+                      <div class="flex flex-col gap-10">
                         <div class="flex items-center gap-6">
                           <h2 class="text-md md:text-xl text-neutral-600 dark:text-neutral-200 font-bold">{meaning.partOfSpeech}</h2>
                           <Line/>
@@ -87,7 +87,7 @@ export const Main = () => {
                             </For>
                           </div>
                         </Show>
-                      </article>
+                      </div>
                     )}
                   </For>
                 </div>
