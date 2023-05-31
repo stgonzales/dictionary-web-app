@@ -1,13 +1,14 @@
-import { For, Show } from "solid-js"
-import { useDictionary, useFontFamily } from "@/context"
+import { For, Show, createSignal } from "solid-js"
+import { Phonetic, useDictionary, useFontFamily } from "@/context"
 import { Form, Line } from "@/components"
 
 export const Main = () => {
   const [ fontState ] = useFontFamily()
   const [ dictionaryState ] = useDictionary()
 
-  const handleAudio = (url: string) => {
-    const audio = new Audio(url)
+  const handleAudio = (phonetics: Phonetic[]) => {
+    const audios = phonetics.filter(audio => (audio.audio && audio.audio.includes('-us')))
+    const audio = new Audio(audios[0].audio)
     audio.play()
   }
 
@@ -37,7 +38,7 @@ export const Main = () => {
                   </Show>
                 </div>
                 <Show when={result.phonetics}>
-                  <div class="w-12 h-12 md:w-[75px] md:h-[75px] hover:cursor-pointer hover:scale-105 transition-transform group" onClick={() => handleAudio(result.phonetics[0].audio)}>
+                  <div class="w-12 h-12 md:w-[75px] md:h-[75px] hover:cursor-pointer hover:scale-105 transition-transform group" onClick={() => handleAudio(result.phonetics)}>
                     <svg class="fill-primary/25 hover:fill-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 75 75"><g fill-rule="evenodd"><circle cx="37.5" cy="37.5" r="37.5"/><path class="fill-primary group-hover:fill-neutral-100" d="M29 27v21l21-10.5z"/></g></svg>
                   </div>
                 </Show>
