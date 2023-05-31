@@ -48,19 +48,19 @@ export const Main = () => {
                     {(meaning) => (
                       <div class="flex flex-col gap-10">
                         <div class="flex items-center gap-6">
-                          <h2 class="text-md md:text-xl text-neutral-600 dark:text-neutral-200 font-bold">{meaning.partOfSpeech}</h2>
+                          <h2 class={`font-${fontState.fontFamily} text-md md:text-xl text-neutral-600 dark:text-neutral-200 font-bold`}>{meaning.partOfSpeech}</h2>
                           <Line/>
                         </div>
-                        <h3 class="text-sm md:text-lg text-neutral-400">Meaning</h3>
+                        <h3 class={`font-${fontState.fontFamily} text-sm md:text-lg text-neutral-400`}>Meaning</h3>
                         <ul>
                           <For each={meaning.definitions}>
                             {({definition, example}) => (
                               <li class="ml-[22px] flex gap-5">
                                 <div class="text-primary">•</div>
                                 <div>
-                                  <div class="mb-4 text-xs md:text-md text-neutral-600 dark:text-neutral-100">{definition}</div>
+                                  <p class={`font-${fontState.fontFamily} mb-4 text-xs md:text-md text-neutral-600 dark:text-neutral-100`}>{definition}</p>
                                   <Show when={example}>
-                                    <span class="text-sm md:text-md text-neutral-400">"{example}"</span>
+                                    <span class={`font-${fontState.fontFamily} text-sm md:text-md text-neutral-400`}>"{example}"</span>
                                   </Show>
                                 </div>
                               </li>
@@ -69,20 +69,20 @@ export const Main = () => {
                         </ul>
                         <Show when={meaning.synonyms && meaning.synonyms.length >= 1}>
                           <div class="flex gap-3 flex-wrap">
-                            <h3 class="text-sm md:text-lg text-neutral-400">Synonyms</h3>
+                            <h3 class={`font-${fontState.fontFamily} text-sm md:text-lg text-neutral-400`}>Synonyms</h3>
                             <For each={meaning.synonyms}>
                               {(synonym) => (
-                                <p class="text-sm md:text-lg text-primary font-bold">{synonym}</p>
+                                <p class={`font-${fontState.fontFamily} text-sm md:text-lg text-primary font-bold`}>{synonym}</p>
                               )}
                             </For>
                           </div>
                         </Show>
                         <Show when={meaning.antonyms && meaning.antonyms.length >= 1}>
                           <div class="flex gap-3 flex-wrap">
-                            <h3 class="text-sm md:text-lg text-neutral-400">Antonyms</h3>
+                            <h3 class={`font-${fontState.fontFamily} text-sm md:text-lg text-neutral-400`}>Antonyms</h3>
                             <For each={meaning.antonyms}>
                               {(antonym) => (
-                                <p class="text-sm md:text-lg text-primary font-bold">{antonym}</p>
+                                <p class={`font-${fontState.fontFamily} text-sm md:text-lg text-primary font-bold`}>{antonym}</p>
                               )}
                             </For>
                           </div>
@@ -95,12 +95,12 @@ export const Main = () => {
               <Line/>
               <section id="source">
                 <div class="flex gap-5 text-xs underline text-neutral-400">
-                  <h6>Source</h6>
+                  <h3 class={`font-${fontState.fontFamily}`}>Source</h3>
                   <div class="flex flex-col gap-1">
                     <For each={result.sourceUrls}>
                       {(url) => (
                         <div class="flex gap-2">
-                          <a class="text-neutral-600 dark:text-neutral-100" href={url}>{url}</a>
+                          <a class={`font-${fontState.fontFamily} text-neutral-600 dark:text-neutral-100`} href={url}>{url}</a>
                           <svg class="stroke-neutral-400" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"><path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.09 3.545H2.456A1.455 1.455 0 0 0 1 5v6.545A1.455 1.455 0 0 0 2.455 13H9a1.455 1.455 0 0 0 1.455-1.455V7.91m-5.091.727 7.272-7.272m0 0H9m3.636 0V5"/></svg>
                         </div>
                       )}
